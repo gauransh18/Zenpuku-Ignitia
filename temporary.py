@@ -6,6 +6,7 @@ import numpy as np
 import tensorflow as tf
 import random
 
+
 import json
 with open('intents.json') as json_data:
     intents = json.load(json_data)

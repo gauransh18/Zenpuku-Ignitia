@@ -26,8 +26,7 @@ for intent in intents['intents']:
         if intent['tag'] not in tags:
             tags.append(intent['tag'])
 
-
-words = [stemmer.stem(w.lower()) for w in words if w not in ignore]
+words = [stem(w) for w in words if w not in ignore]
 words = sorted(list(set(words)))
 
 tags = sorted(list(set(tags)))
