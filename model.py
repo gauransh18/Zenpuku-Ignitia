@@ -3,12 +3,12 @@ import nltk
 nltk.download('punkt')
 import tflearn
 
-def model_(train_x,train_y):
+def model_(training,output):
     tf.compat.v1.reset_default_graph()
-    net = tflearn.input_data(shape=[None, len(train_x[0])])
+    net = tflearn.input_data(shape=[None, len(training[0])])
     net = tflearn.fully_connected(net, 8)
     net = tflearn.fully_connected(net, 8)
-    net = tflearn.fully_connected(net, len(train_y[0]), activation='softmax')
+    net = tflearn.fully_connected(net, len(output[0]), activation='softmax')
     net = tflearn.regression(net)
     
     return net
