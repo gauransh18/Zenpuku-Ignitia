@@ -6,6 +6,7 @@ from nltk_utils import tokenize, stem, bag_of_words
 import numpy as np
 import tensorflow as tf
 import random
+from model import model_
 
 import json
 with open('intents.json') as json_data:
@@ -63,6 +64,8 @@ training = np.array(training)
 
 train_x = list(training[:,0])
 train_y = list(training[:,1])
+
+model_(train_x,train_y)
 
 
 
