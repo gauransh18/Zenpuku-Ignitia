@@ -3,11 +3,31 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 //import 'package:zenpuku/home.dart';
-//import 'home.dart';
+import 'home.dart';
 import 'books_gita.dart';
+import 'bookView.dart';
 import 'routes.dart';
 import 'breathing.dart';
 import 'matching.dart';
+import 'heatmap.dart';
+import 'graphics.dart';
+
+
+Map<int, Color> color = {
+50: Color.fromRGBO(255, 92, 87, .1),
+100: Color.fromRGBO(255, 92, 87, .2),
+200: Color.fromRGBO(255, 92, 87, .3),
+300: Color.fromRGBO(255, 92, 87, .4),
+400: Color.fromRGBO(255, 92, 87, .5),
+500: Color.fromRGBO(255, 92, 87, .6),
+600: Color.fromRGBO(255, 92, 87, .7),
+700: Color.fromRGBO(255, 92, 87, .8),
+800: Color.fromRGBO(255, 92, 87, .9),
+900: Color.fromRGBO(255, 92, 87, 1),
+};
+
+MaterialColor colorCustom = MaterialColor(0xFFFEA3DA, color);
+
 
 //constants
 //app accent color : blue bright? #4eace9
@@ -21,14 +41,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       routes: {
         homeRoute: (context) =>  Books(),
-        breatheRoute: (context) =>  BreathingCarouselApp(),
+        breatheRoute: (context) =>  BreathingCarouselScreen(),
         matchingRoute: (context) => MemoryMatchGame(),
+        heatmapRoute: (context) => Meditaion(),
        
       },
       debugShowCheckedModeBanner: false,
       title: 'Zenpuku',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: colorCustom,
       ),
       home: AppStart(),
     );
@@ -63,12 +84,12 @@ class _AppStartState extends State<AppStart> {
               notVisited();
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => Books()),
+                MaterialPageRoute(builder: (context) => Home()),
               );
             },
           );
         } else {
-          return Books();
+          return Home();
         }
       },
     );
